@@ -27,7 +27,7 @@ plt.plot(highs,color='red')
 plt.title("Daily High Temps, July 2018",fontsize=16)
 plt.xlabel("",fontsize=16)
 plt.ylabel("Temperature (F)", fontsize=16)
-plt.tick_params(axis='both',which="major")
+plt.tick_params(axis='both',which="major",labelsize=16)
 
 #plt.plot([1,2,3,4,5],color='red')
 plt.show()
