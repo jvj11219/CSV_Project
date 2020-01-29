@@ -20,10 +20,16 @@ highs = []
 dates = []
 lows = []
 for row in csv_file:
-    highs.append(int(row[5]))
-    current_date = datetime.strptime(row[2], '%Y-%m-%d')
-    dates.append(current_date)
-    lows.append(int(row[6]))
+    try:
+        high = int(row[4])
+        low = int(row[5])
+        current_date = datetime.strptime(row[2], '%Y-%m-%d')
+    except ValueError:
+        print(f"Missing data for {current_date}")
+    else:
+        highs.append(high)
+        highs.append(low)
+        dates.append(current_date)
 
 #Print 0-9 (top 10) from highs
 print(highs[:10])
