@@ -1,3 +1,6 @@
+# Josh Jacobsen - MW 2:30pm
+# CSV_Project
+
 import matplotlib.pyplot as plt
 import csv
 
