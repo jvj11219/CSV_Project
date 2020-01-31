@@ -31,11 +31,13 @@ death_valley_header_row = next(death_valley_csv)
 sitka_highs = []
 sitka_dates = []
 sitka_lows = []
+sitka_station_name = ''
 for row in sitka_weather_csv:
     try:
         sitka_high = int(row[5])
         sitka_low = int(row[6])
         current_date = datetime.strptime(row[2], '%Y-%m-%d')
+        sitka_station_name = row[1]
     except ValueError:
         print(f'Missing data for {current_date}')
     else:
@@ -47,11 +49,13 @@ for row in sitka_weather_csv:
 death_valley_highs = []
 death_valley_dates = []
 death_valley_lows  = []
+death_valley_station_name = ''
 for row in death_valley_csv:
     try:
         death_valley_high = int(row[4])
         death_valley_low = int(row[5])
         current_date = datetime.strptime(row[2], '%Y-%m-%d')
+        death_valley_station_name = row[1]
     except ValueError:
         print(f'Missing data for {current_date}')
     else:
@@ -67,20 +71,20 @@ for row in death_valley_csv:
 
 #Create Subplots and Set Title
 fig, (ax1, ax2) = plt.subplots(2)
-fig.suptitle("Temperature comparison between SITKA AIRPORT, AK US and DEATH VALLEY, VA US",fontsize=10)
+fig.suptitle("Temperature comparison between " + sitka_station_name + " and " + death_valley_station_name,fontsize=10)
 
 #Format Sitka Subplot
 ax1.plot(sitka_dates, sitka_highs, color="red", alpha=0.5)
 ax1.plot(sitka_dates, sitka_lows, color="blue", alpha=0.5)
 ax1.fill_between(sitka_dates, sitka_highs, sitka_lows, facecolor='blue',alpha=0.1)
-ax1.set_title('SITKA AIRPORT, AK US',fontsize=8)
+ax1.set_title(sitka_station_name,fontsize=8)
 ax1.tick_params(axis="both",which="major",labelsize=8)
 
 #Format Death Valley Subplot
 ax2.plot(death_valley_dates, death_valley_highs, color="red", alpha=0.5)
 ax2.plot(death_valley_dates, death_valley_lows, color="blue", alpha=0.5)
 ax2.fill_between(death_valley_dates, death_valley_highs, death_valley_lows, facecolor='blue',alpha=0.1)
-ax2.set_title('DEATH VALLEY, CA US',fontsize=8)
+ax2.set_title(death_valley_station_name,fontsize=8)
 ax2.tick_params(axis="both",which="major",labelsize=8)
 
 #Format Dates
