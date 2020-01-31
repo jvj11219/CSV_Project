@@ -21,11 +21,41 @@ death_valley_header_row = next(death_valley_csv)
 #print(type(sitka_header_row))
 #print(type(death_valley_header_row))
 
+#Create Variables for Index Locations, Loop Through Headers, and Store Index Value Locations
+sitka_low_loc = 0
+sitka_high_loc = 0
+sitka_date_loc = 0
+sitka_station_loc = 0
+death_valley_low_loc = 0
+death_valley_high_loc = 0
+death_valley_date_loc = 0
+death_valley_station_loc = 0
+for index,column_header in enumerate(sitka_header_row):
+    if column_header == "NAME":
+        sitka_station_loc = index
+    if column_header == "DATE":
+        sitka_date_loc = index
+    if column_header == "TMAX":
+        sitka_high_loc = index
+    if column_header == "TMIN":
+        sitka_low_loc = index
+    print(index,column_header)
+for index,column_header in enumerate(death_valley_header_row):
+    if column_header == "NAME":
+        death_valley_station_loc = index
+    if column_header == "DATE":
+        death_valley_date_loc = index
+    if column_header == "TMAX":
+        death_valley_high_loc = index
+    if column_header == "TMIN":
+        death_valley_low_loc = index
+    print(index,column_header)
+
 #Loop Through Columns and Print Column Names and Indexes
-#for index,column_header in enumerate(sitka_header_row):
-#    print(index,column_header)
-#for index,column_header in enumerate(death_valley_header_row):
-#    print(index,column_header)
+for index,column_header in enumerate(sitka_header_row):
+    print(index,column_header)
+for index,column_header in enumerate(death_valley_header_row):
+    print(index,column_header)
 
 #Create list and Append High/Low Temps for Sitka
 sitka_highs = []
@@ -34,10 +64,10 @@ sitka_lows = []
 sitka_station_name = ''
 for row in sitka_weather_csv:
     try:
-        sitka_high = int(row[5])
-        sitka_low = int(row[6])
-        current_date = datetime.strptime(row[2], '%Y-%m-%d')
-        sitka_station_name = row[1]
+        sitka_high = int(row[sitka_high_loc])
+        sitka_low = int(row[sitka_low_loc])
+        current_date = datetime.strptime(row[sitka_date_loc], '%Y-%m-%d')
+        sitka_station_name = row[sitka_station_loc]
     except ValueError:
         print(f'Missing data for {current_date}')
     else:
@@ -52,10 +82,10 @@ death_valley_lows  = []
 death_valley_station_name = ''
 for row in death_valley_csv:
     try:
-        death_valley_high = int(row[4])
-        death_valley_low = int(row[5])
-        current_date = datetime.strptime(row[2], '%Y-%m-%d')
-        death_valley_station_name = row[1]
+        death_valley_high = int(row[death_valley_high_loc])
+        death_valley_low = int(row[death_valley_low_loc])
+        current_date = datetime.strptime(row[death_valley_date_loc], '%Y-%m-%d')
+        death_valley_station_name = row[death_valley_station_loc]
     except ValueError:
         print(f'Missing data for {current_date}')
     else:
