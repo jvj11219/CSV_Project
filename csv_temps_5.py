@@ -69,9 +69,12 @@ ax2.plot(dates_2, highs_2, color="red", alpha=0.5)
 ax2.plot(dates_2, lows_2, color="blue", alpha=0.5)
 ax1.fill_between(dates_1, highs_1, lows_1, facecolor='blue',alpha=0.1)
 ax2.fill_between(dates_2, highs_2, lows_2, facecolor='blue',alpha=0.1)
-ax1.set_title('SITKA AIRPORT, AK US')
-ax2.set_title('DEATH VALLEY, CA US')
+ax1.set_title('SITKA AIRPORT, AK US',fontsize=8)
+ax2.set_title('DEATH VALLEY, CA US',fontsize=8)
+#ax2.xlabel("",fontsize=10)
 
+ax1.tick_params(axis="both",which="major",labelsize=8)
+ax2.tick_params(axis="both",which="major",labelsize=8)
 
 #Formating
 #plt.plot(dates, highs, color="red", alpha=0.5)
