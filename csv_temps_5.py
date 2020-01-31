@@ -39,7 +39,7 @@ for index,column_header in enumerate(sitka_header_row):
         sitka_high_loc = index
     if column_header == "TMIN":
         sitka_low_loc = index
-    print(index,column_header)
+    #print(index,column_header)
 for index,column_header in enumerate(death_valley_header_row):
     if column_header == "NAME":
         death_valley_station_loc = index
@@ -49,13 +49,7 @@ for index,column_header in enumerate(death_valley_header_row):
         death_valley_high_loc = index
     if column_header == "TMIN":
         death_valley_low_loc = index
-    print(index,column_header)
-
-#Loop Through Columns and Print Column Names and Indexes
-for index,column_header in enumerate(sitka_header_row):
-    print(index,column_header)
-for index,column_header in enumerate(death_valley_header_row):
-    print(index,column_header)
+    #print(index,column_header)
 
 #Create list and Append High/Low Temps for Sitka
 sitka_highs = []
